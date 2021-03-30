@@ -15,7 +15,7 @@ function Chat({ location }) {
   const [users, setUsers] = useState("");
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
-  const ENDPOINT = "localhost:5000";
+  const ENDPOINT = "https://realtime-chating-app.herokuapp.com/";
 
   useEffect(() => {
     const { name, room } = querystring.parse(location.search);
@@ -42,7 +42,7 @@ function Chat({ location }) {
     socket.on("roomData", ({ users }) => {
       setUsers(users);
     });
-  }, []);
+  }, [messages]);
 
   const sendMessage = (e) => {
     e.preventDefault();
